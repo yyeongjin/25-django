@@ -29,12 +29,18 @@ MEDIA_ROOT = BASE_DIR / 'uploaded_files'
 ```
 ![alt text](images/image.png)
 
+---
+
 ### 2. STATIC, MEDIA 디렉토리 생성
 ![alt text](images/image-1.png)
 ![alt text](images/image-2.png)
 
+---
+
 ### 3. assets 경로 이미지 업로드
 ![alt text](images/image-3.png)
+
+---
 
 ### 4. articles/templates/index.html 수정
 ```django
@@ -44,6 +50,8 @@ MEDIA_ROOT = BASE_DIR / 'uploaded_files'
 ```
 ![alt text](images/image-4.png)
 
+---
+
 ### 5. 서버 실행 및 확인
 
 ```bash
@@ -51,7 +59,10 @@ python manage.py runserver
 ```
 ![alt text](images/image-5.png)
 
-### 5. model 생성
+
+---
+
+### 6. model 생성
 ```python
 class Article(models.Model):
     image = models.ImageField(blank=True) # upload_to='' 옵션을 사용할 경우 MEDIA_ROOT 경로 아래에 upload_to에 지정한 폴더를 자동으로 생성하고 그 안에 파일을 저장한다.
@@ -67,7 +78,9 @@ python manage.py migrate
 ```
 ![alt text](images/image-7.png)
 
-### 6. form 생성
+---
+
+### 7. form 생성
 ```python
 class ArticleForm(forms.ModelForm):
     class Meta:
@@ -76,7 +89,9 @@ class ArticleForm(forms.ModelForm):
 ```
 ![alt text](images/image-9.png)
 
-### 7. firstpjt/urls.py 수정
+---
+
+### 8. firstpjt/urls.py 수정
 ```python
 from django.conf import settings
 from django.conf.urls.static import static
@@ -86,7 +101,9 @@ from django.conf.urls.static import static
 ```
 ![alt text](images/image-13.png)
 
-### 8. views.py에서 index 함수 수정
+---
+
+### 9. views.py에서 index 함수 수정
 ```python
 def index(request):
     num_model = demo_model.objects.all()
@@ -124,7 +141,9 @@ def index(request):
 ```
 ![alt text](images/image-10.png)
 
-### 9. index.html 수정
+---
+
+### 10. index.html 수정
 {% endblock content %} 위에 기입합니다.
 ```django
   <h3>이미지 업로드</h3>
@@ -149,7 +168,9 @@ def index(request):
   {% endfor %}
 ```
 
-### 10. 서버 실행 및 확인
+---
+
+### 11. 서버 실행 및 확인
 
 ```bash
 python manage.py runserver
